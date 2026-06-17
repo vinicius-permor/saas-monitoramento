@@ -1,0 +1,35 @@
+syntax = "proto3";
+package alert;
+
+option go_package = "saas-monitoramento/backend/gen";
+
+// Serviço de alertas
+service AlertService {
+  // Chamado pelo módulo de IA (Python) quando uma ameaça é detectada
+  rpc SendAlert(SendAlertRequest) returns (SendAlertResponse);
+  // Stream para o app Flutter receber alertas em tempo real
+  rpc StreamAlerts(StreamAlertsRequest) returns (stream Alert);
+}
+
+message SendAlertRequest {
+  string camera_id = 1;
+  string threat_type = 2;   // "intrusion", "fire", etc.
+  string snapshot_url = 3;  // URL da foto do evento
+  int64 timestamp = 4;      // Unix timestamp
+}
+
+message SendAlertResponse {
+  string alert_id = 1;
+}
+
+message StreamAlertsRequest {
+  string user_id = 1;  // filtra alertas por usuário
+}
+
+message Alert {
+  string alert_id = 1;
+  string camera_id = 2;
+  string threat_type = 3;
+  string snapshot_url = 4;
+  int64 timestamp = 5;
+}

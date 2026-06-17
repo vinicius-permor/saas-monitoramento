@@ -1,0 +1,36 @@
+# Ambientes virtuais Python
+venv/
+.venv/
+env/
+
+# Cache Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+
+# Modelos YOLO baixados (será baixado novamente)
+*.pt
+
+# Arquivos de dependências do Go
+backend/vendor/
+
+# Binários Go compilados
+backend/cmd/server/server
+backend/server
+*.exe
+*.test
+
+# Arquivos de configuração de IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Logs
+*.log
+
+# Arquivos de sistema operacional
+.DS_Store
+Thumbs.db
+EOF
